@@ -4,20 +4,20 @@ from Crypto import Random
 from Crypto.Cipher import AES
 
 def byte2carray(data, n=16):
-	t = ""
-	for chunk in [data[i:i + n] for i in xrange(0, len(data), n)]:
-		t += '"'
-		for c in chunk:
-			t+='\\x'+c.encode('hex')
-		t += '"\r\n'
-	return t[:-2]
-	
+    t = ""
+    for chunk in [data[i:i + n] for i in xrange(0, len(data), n)]:
+        t += '"'
+        for c in chunk:
+            t += '\\x'+c.encode('hex')
+        t += '"\r\n'
+    return t[:-2]
+
 def byte2intarray(data):
-	t = "{"
-	for c in data:
-		t+=str(int(c.encode('hex'), 16)) + ', '
-	t += ',0 };'
-	return t
+    t = "{"
+    for c in data:
+        t += str(int(c.encode('hex'), 16)) + ', '
+    t += ',0 };'
+    return t
 
 class AESCipher(object):
 
@@ -42,4 +42,3 @@ class AESCipher(object):
     @staticmethod
     def _unpad(s):
         return s[:-ord(s[len(s)-1:])]
-	

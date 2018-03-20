@@ -1,0 +1,5 @@
+#!/bin/bash
+
+g++ main.cpp -i Rijndael.cpp  -o main
+
+echo "output in file: main"

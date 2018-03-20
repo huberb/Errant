@@ -942,11 +942,11 @@ CRijndael::~CRijndael()
 void CRijndael::MakeKey(char const* key, char const* chain, int keylength, int blockSize)
 {
 	if(NULL == key)
-		throw exception("Empty key");
+		throw exception();
 	if(!(16==keylength || 24==keylength || 32==keylength))
-		throw exception("Incorrect key length");
+		throw exception();
 	if(!(16==blockSize || 24==blockSize || 32==blockSize))
-		throw exception("Incorrect block length");
+		throw exception();
 	m_keylength = keylength;
 	m_blockSize = blockSize;
 	//Initialize the chain
@@ -1049,7 +1049,8 @@ void CRijndael::MakeKey(char const* key, char const* chain, int keylength, int b
 void CRijndael::DefEncryptBlock(char const* in, char* result)
 {
 	if(false==m_bKeyInit)
-		throw exception(sm_szErrorMsg1);
+		// throw exception(sm_szErrorMsg1);
+		throw exception();
 	int* Ker = m_Ke[0];
 	int t0 = ((unsigned char)*(in++) << 24);
 	t0 |= ((unsigned char)*(in++) << 16);
@@ -1124,7 +1125,7 @@ void CRijndael::DefEncryptBlock(char const* in, char* result)
 void CRijndael::DefDecryptBlock(char const* in, char* result)
 {
 	if(false==m_bKeyInit)
-		throw exception(sm_szErrorMsg1);
+		throw exception();
 	int* Kdr = m_Kd[0];
 	int t0 = ((unsigned char)*(in++) << 24);
 	t0 = t0 | ((unsigned char)*(in++) << 16);
@@ -1197,7 +1198,7 @@ void CRijndael::DefDecryptBlock(char const* in, char* result)
 void CRijndael::EncryptBlock(char const* in, char* result)
 {
 	if(false==m_bKeyInit)
-		throw exception(sm_szErrorMsg1);
+		throw exception();
     if(DEFAULT_BLOCK_SIZE == m_blockSize)
 	{
 		DefEncryptBlock(in, result);
@@ -1247,7 +1248,7 @@ void CRijndael::EncryptBlock(char const* in, char* result)
 void CRijndael::DecryptBlock(char const* in, char* result)
 {
 	if(false==m_bKeyInit)
-		throw exception(sm_szErrorMsg1);
+		throw exception();
 	if(DEFAULT_BLOCK_SIZE == m_blockSize)
 	{
 		DefDecryptBlock(in, result);
@@ -1294,10 +1295,10 @@ void CRijndael::DecryptBlock(char const* in, char* result)
 void CRijndael::Encrypt(char const* in, char* result, size_t n, int iMode)
 {
 	if(false==m_bKeyInit)
-		throw exception(sm_szErrorMsg1);
+		throw exception();
 	//n should be > 0 and multiple of m_blockSize
 	if(0==n || n%m_blockSize!=0)
-		throw exception(sm_szErrorMsg2);
+		throw exception();
 	int i;
 	char const* pin;
 	char* presult;
@@ -1337,10 +1338,10 @@ void CRijndael::Encrypt(char const* in, char* result, size_t n, int iMode)
 void CRijndael::Decrypt(char const* in, char* result, size_t n, int iMode)
 {
 	if(false==m_bKeyInit)
-		throw exception(sm_szErrorMsg1);
+		throw exception();
 	//n should be > 0 and multiple of m_blockSize
 	if(0==n || n%m_blockSize!=0)
-		throw exception(sm_szErrorMsg2);
+		throw exception();
 	int i;
 	char const* pin;
 	char* presult;
@@ -1377,4 +1378,5 @@ void CRijndael::Decrypt(char const* in, char* result, size_t n, int iMode)
 		}
 	}
 }
+
 
