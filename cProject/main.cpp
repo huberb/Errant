@@ -77,7 +77,7 @@ int searchPattern(char* buffer, int buffLen)
 }
 
 int main() {
-    int verified = 1;
+    int verified = 0;
     int shellcodeLen = sizeof(codeEnc) - 1;
     std::cout << "Length of Shellcode: " << shellcodeLen << "\n";
 
