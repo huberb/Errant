@@ -1,6 +1,7 @@
 My approach on the BitErrant Attack
 
 DONE:
+
     1. learn about shattered
 
     2. port PoC to Unix
@@ -18,6 +19,7 @@ DONE:
 
 
 TODO:
+
     1. find out how to create the perfect sized assembly
 
     2. read up on C++ Sections
