@@ -89,9 +89,9 @@ if __name__ == '__main__':
     writeFileData(goodfile, './output/good')
     writeFileData(badfile, './output/bad')
 
-    print("Generating the good Torrent File:")
+    print("Generating the good Torrent File..")
     (good_torrent, good_pieces) = generateTorrent(goodfile, 'good')
-    print("Generating the bad Torrent File:")
+    print("Generating the bad Torrent File..")
     (bad_torrent, bad_pieces) = generateTorrent(badfile, 'bad')
 
     print("These should have the same SHA1 Hash")

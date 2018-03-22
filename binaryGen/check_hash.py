@@ -1,6 +1,7 @@
 import bencode
+import sys
 
-with open("./output/biterrant.torrent", 'rb') as fh:
+with open(sys.argv[1], 'rb') as fh:
     torrent_data = fh.read()
 
 def byte2carray(data, n=16):
