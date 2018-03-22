@@ -15,13 +15,12 @@ DONE:
 
         - they can be concatenated with zero bytes and still execute like before
 
-    so we can create any size of torrent pieces!
+        so we can create any size of torrent pieces!
 
+    5. create two different binaries with the same torrent file
+
+    6. make them execute depending on a hidden switch
 
 TODO:
-
-    1. find out how to create the perfect sized assembly
-
-    2. read up on C++ Sections
 
     3. simplify proof of concept
